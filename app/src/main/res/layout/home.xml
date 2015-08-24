@@ -1,0 +1,55 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+    >
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:tools="http://schemas.android.com/tools"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:context=".MainActivity"
+                  android:orientation="vertical"
+                  android:padding="10dp"
+                  android:gravity="center">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:id="@+id/imageView"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/logo"/>
+
+        <ImageButton
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:id="@+id/tvButton"
+            android:background="@drawable/tv"
+            android:layout_below="@+id/imageView"
+            android:layout_centerHorizontal="true"
+            android:longClickable="false"
+            android:padding="10dp"
+            />
+        <ImageButton
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:id="@+id/chaine1Button"
+            android:background="@drawable/chaine1"
+            android:layout_below="@+id/tvButton"
+            android:layout_centerHorizontal="true"/>
+        <ImageButton
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:id="@+id/chaine2Button"
+            android:background="@drawable/chaine2"
+            android:layout_below="@+id/tvButton"
+            android:layout_centerHorizontal="true"/>
+
+        <ImageButton
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:id="@+id/gotoSite"
+            android:background="@drawable/website"
+            android:layout_gravity="center_horizontal"/>
+
+    </LinearLayout>
+</ScrollView>
