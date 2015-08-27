@@ -2,6 +2,7 @@ package com.yeleman.ortm_droid;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
@@ -9,6 +10,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -19,7 +21,7 @@ import com.novoda.merlin.Merlin;
  */
 public class MyWebView extends Activity{
 
-    private WebView webView;
+    private WebView mWebView;
     private String page;
     private String url;
     private AlertDialog alertDialog;
@@ -52,32 +54,38 @@ public class MyWebView extends Activity{
             alertDialog.show();
         } else {
 
-            //final ProgressDialog pd = ProgressDialog.show(MainActivity.this, "", "Chargement en cours ...", true);
-
-            webView = (WebView) findViewById(R.id.webView);
-            //webView.getSettings().setLoadWithOverviewMode(true);
-            //webView.getSettings().setUseWideViewPort(true);
-            //webView.getSettings().setBuiltInZoomControls(true);
-            webView.getSettings().setJavaScriptEnabled(true);
-            webView.setWebChromeClient(new WebChromeClient() {
-                public void onProgressChanged(WebView view, int progress) {
-                    // Activities and WebViews measure progress with different scales.
-                    // The progress meter will automatically disappear when we reach 100%
-                    MyWebView.this.setProgress(progress * 1000);
-                }
-            });
-
             Bundle extras = getIntent().getExtras();
             page = extras.getString("page");
             if (page.equals("tv")){
-                url = "http://www.ortm.info/ortm-en-live/";
+                url = "http://cdn.livestream.com/embed/maliactu?layout=4&height=340&width=560&autoplay=true";
             }if (page.equals("ch1")){
-                url = "http://www.ortm.info/radio-national-en-live/";
+                url = "http://stream.rfi.fr/rfiafrique/all/rfiafrique-64k.mp3";
             }if (page.equals("ch2")){
-                url = "http://www.ortm.info/chaine-ii-en-live/";
+                url = "http://stream.rfi.fr/rfiafrique/all/rfiafrique-64k.mp3";
             }
-            webView.loadUrl(url);
-            webView.reload();
+
+            final ProgressDialog pd = ProgressDialog.show(MyWebView.this, "", "Chargement en cours ...", true);
+
+            mWebView = (WebView) findViewById(R.id.webView);
+            mWebView.getSettings().setJavaScriptEnabled(true);
+            //mWebView.getSettings().setPluginsEnabled(true);
+
+            mWebView.getSettings().setPluginState(WebSettings.PluginState.ON);
+            mWebView.setWebChromeClient(new WebChromeClient() {
+                public void onProgressChanged(WebView view, int progress) {
+                    //Also you can show the progress percentage using integer value 'progress'
+                    if(!pd.isShowing()){
+                        pd.show();
+                    }
+                    if (progress == 100&&pd.isShowing()) {
+                        pd.dismiss();
+                    }
+                }
+            });
+
+            mWebView.loadUrl(url);
+            mWebView.reload();
+
         }
     }
 
