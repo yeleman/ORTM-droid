@@ -16,16 +16,15 @@ public class Home extends Activity {
     private ImageButton chaine2Button;
     private ImageButton siteButton;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
-
         setupUI();
     }
 
     public void setupUI() {
-
         tvButton = (ImageButton) findViewById(R.id.tvButton);
         chaine1Button = (ImageButton) findViewById(R.id.chaine1Button);
         chaine2Button = (ImageButton) findViewById(R.id.chaine2Button);
@@ -33,22 +32,22 @@ public class Home extends Activity {
         siteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.ortm.ml"));
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW,
+                                                         Uri.parse("http://www.ortm.ml"));
                 startActivity(browserIntent);
             }
         });
         tvButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent a = new Intent(Home.this, MyWebView.class);
-                a.putExtra("page", "tv");
-                startActivity(a);
+                    Intent a = new Intent(Home.this, ORTMVideoView.class);
+                    startActivity(a);
             }
         });
         chaine1Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent a = new Intent(Home.this, MyWebView.class);
+                Intent a = new Intent(Home.this, ORTMWebView.class);
                 a.putExtra("page", "ch1");
                 startActivity(a);
             }
@@ -56,7 +55,7 @@ public class Home extends Activity {
         chaine2Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent a = new Intent(Home.this, MyWebView.class);
+                Intent a = new Intent(Home.this, ORTMWebView.class);
                 a.putExtra("page", "ch2");
                 startActivity(a);
             }

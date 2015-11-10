@@ -19,7 +19,7 @@ import com.novoda.merlin.Merlin;
 /**
  * Created by fad on 21/08/15.
  */
-public class MyWebView extends Activity{
+public class ORTMWebView extends Activity{
 
     private WebView mWebView;
     private String page;
@@ -34,37 +34,20 @@ public class MyWebView extends Activity{
     }
 
     protected void setupUI() {
-        if (!isOnline()) {
-            //Dialog
-
-            alertDialog = new AlertDialog.Builder(MyWebView.this).create();
-            alertDialog.setTitle("Problème de connexion");
-            alertDialog.setIcon(R.mipmap.ic_launcher);
-            alertDialog.setMessage("Une connexion Internet est requise.\nVeuillez l'activer et réessayer.");
-            alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int which) {
-                    finish();
-                }
-            });
-            alertDialog.setButton("Reessayer", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int which) {
-                    setupUI();
-                }
-            });
-            alertDialog.show();
+        if (!Tools.isOnline(this)) {
+            mWebView = (WebView) findViewById(R.id.webView);
+            mWebView.getSettings().setJavaScriptEnabled(true);
+            mWebView.loadUrl("file:///android_asset/landing-android.html");
         } else {
-
             Bundle extras = getIntent().getExtras();
             page = extras.getString("page");
-            if (page.equals("tv")){
-                url = "http://cdn.livestream.com/embed/maliactu?layout=4&height=340&width=560&autoplay=true";
-            }if (page.equals("ch1")){
+            if (page.equals("ch1")){
                 url = "http://stream.rfi.fr/rfiafrique/all/rfiafrique-64k.mp3";
             }if (page.equals("ch2")){
                 url = "http://stream.rfi.fr/rfiafrique/all/rfiafrique-64k.mp3";
             }
 
-            final ProgressDialog pd = ProgressDialog.show(MyWebView.this, "", "Chargement en cours ...", true);
+            final ProgressDialog pd = ProgressDialog.show(ORTMWebView.this, "", "Chargement en cours ...", true);
 
             mWebView = (WebView) findViewById(R.id.webView);
             mWebView.getSettings().setJavaScriptEnabled(true);
@@ -82,35 +65,9 @@ public class MyWebView extends Activity{
                     }
                 }
             });
-
             mWebView.loadUrl(url);
             mWebView.reload();
 
-        }
-    }
-
-    public boolean isOnline() {
-        ConnectivityManager cm =
-                (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo netInfo = cm.getActiveNetworkInfo();
-        if (netInfo != null && netInfo.isConnectedOrConnecting()) {
-            return true;
-        }
-        return false;
-    }
-
-
-    public class myWebClient extends WebViewClient
-    {
-        @Override
-        public void onPageStarted(WebView view, String url, Bitmap favicon) {
-            super.onPageStarted(view, url, favicon);
-        }
-
-        @Override
-        public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            view.loadUrl(url);
-            return true;
         }
     }
 }
