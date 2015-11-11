@@ -2,7 +2,7 @@
     <string name="app_name">ORTM</string>
 
     <string name="action_settings">Settings</string>
-    <string name="required_connexion_body">Vous devez être connecté pour accèder au streaming de l'ORTM.</string>
+    <string name="required_connexion_body">Vous devez être connecté pour accèder au livestream de l\'ORTM.</string>
     <string name="loading">Chargement en cours ...</string>
-    <string name="offlive">"Interruption de la division"</string>
+    <string name="offlive">"Pas de division de l\'ORTM"</string>
 </resources>

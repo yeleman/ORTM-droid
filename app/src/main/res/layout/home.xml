@@ -3,60 +3,142 @@
             android:layout_height="fill_parent"
             android:focusableInTouchMode="false"
             android:background="#057d38">
-
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                    xmlns:tools="http://schemas.android.com/tools"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    tools:context=".MainActivity"
+                  xmlns:tools="http://schemas.android.com/tools"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  tools:context=".MainActivity"
                   android:orientation="vertical"
                   android:padding="10dp"
-                  android:gravity="center"
-        >
-
+                  android:gravity="center">
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:id="@+id/imageView"
             android:layout_centerHorizontal="true"
             android:background="@drawable/logo"/>
-        <Button
-            android:id="@+id/button1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="TV"
-            android:background="@android:color/transparent"
-            android:textStyle="bold"/>
-        <ImageButton
-            android:layout_width="300dp"
-            android:layout_height="100dp"
-            android:id="@+id/tvButton"
-            android:layout_below="@+id/imageView"
-            android:layout_centerHorizontal="true"
-            android:longClickable="false"
-            android:padding="10dp"
-            android:background="@drawable/tv"/>
-        <ImageButton
-            android:layout_width="300dp"
-            android:layout_height="100dp"
-            android:id="@+id/chaine1Button"
-            android:background="@drawable/chaine1"
-            android:layout_below="@+id/tvButton"
-            android:layout_centerHorizontal="true"/>
-        <ImageButton
-            android:layout_width="300dp"
-            android:layout_height="100dp"
-            android:id="@+id/chaine2Button"
-            android:background="@drawable/chaine2"
-            android:layout_below="@+id/tvButton"
-            android:layout_centerHorizontal="true"/>
 
-        <ImageButton
-            android:layout_width="300dp"
-            android:layout_height="100dp"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="horizontal"
+            android:layout_margin="5dp"
+            android:gravity="center_vertical"
+            android:background="@android:drawable/picture_frame"
+            android:weightSum="1">
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:id="@+id/Ch1Image"
+                android:foreground="@android:drawable/ic_media_play"
+                android:background="@drawable/logo"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Chaine Nationale"
+                android:id="@+id/ch1Text"
+                android:layout_margin="5dp"
+                android:layout_weight="1.10"
+                android:gravity="center_vertical"/>
+
+            <ImageButton
+                android:id="@+id/pauseButtonCh1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@android:drawable/ic_media_pause"
+                android:layout_marginRight="5dp"/>
+            <ImageButton
+                android:id="@+id/playButtonCh1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@android:drawable/ic_media_play"
+                android:layout_marginRight="5dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="horizontal"
+            android:layout_margin="5dp"
+            android:background="@android:drawable/picture_frame"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:id="@+id/ch2Image"
+                android:foreground="@android:drawable/ic_media_play"
+                android:background="@drawable/logo"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Chaine 2                      "
+                android:id="@+id/ch2Text"
+                android:layout_margin="5dp"
+                android:gravity="center_vertical"/>
+
+            <ImageButton
+                android:id="@+id/pauseButtonCh2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@android:drawable/ic_media_pause"
+                android:layout_marginRight="5dp"/>
+            <ImageButton
+                android:id="@+id/playButtonCh2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@android:drawable/ic_media_play"
+                android:layout_marginRight="5dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="horizontal"
+            android:layout_margin="5dp"
+            android:id="@+id/tvButton"
+            android:background="@android:drawable/picture_frame"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:id="@+id/TVImage"
+                android:foreground="@android:drawable/ic_media_play"
+                android:background="@drawable/logo"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="ORTM TV"
+                android:id="@+id/TVText"
+                android:layout_margin="5dp"
+                android:gravity="center_vertical"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="horizontal"
+            android:layout_margin="5dp"
             android:id="@+id/gotoSite"
-            android:background="@drawable/website"
-            android:layout_gravity="center_horizontal"/>
+            android:background="@android:drawable/picture_frame"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:id="@+id/siteImage"
+                android:foreground="@android:drawable/ic_media_play"
+                android:background="@drawable/logo"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="ortm.ml"
+                android:id="@+id/siteText"
+                android:layout_margin="5dp"
+                android:gravity="center_vertical"/>
+        </LinearLayout>
 
     </LinearLayout>
 </ScrollView>
