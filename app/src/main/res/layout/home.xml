@@ -39,21 +39,21 @@
                 android:text="Chaine Nationale"
                 android:id="@+id/ch1Text"
                 android:layout_margin="5dp"
-                android:layout_weight="1.10"
-                android:gravity="center_vertical"/>
+                android:gravity="center_vertical"
+                android:layout_weight="1" />
 
             <ImageButton
                 android:id="@+id/pauseButtonCh1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@android:drawable/ic_media_pause"
-                android:layout_marginRight="5dp"/>
+                android:layout_marginRight="5dp" />
             <ImageButton
                 android:id="@+id/playButtonCh1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@android:drawable/ic_media_play"
-                android:layout_marginRight="5dp"/>
+                android:layout_marginRight="5dp" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -71,25 +71,26 @@
                 android:background="@drawable/logo"
                 />
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Chaine 2                      "
+                android:text="Chaine 2"
                 android:id="@+id/ch2Text"
                 android:layout_margin="5dp"
-                android:gravity="center_vertical"/>
+                android:gravity="center_vertical"
+                android:layout_weight="1" />
 
             <ImageButton
                 android:id="@+id/pauseButtonCh2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@android:drawable/ic_media_pause"
-                android:layout_marginRight="5dp"/>
+                android:layout_marginRight="5dp" />
             <ImageButton
                 android:id="@+id/playButtonCh2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@android:drawable/ic_media_play"
-                android:layout_marginRight="5dp"/>
+                android:layout_marginRight="5dp" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -113,7 +114,8 @@
                 android:text="ORTM TV"
                 android:id="@+id/TVText"
                 android:layout_margin="5dp"
-                android:gravity="center_vertical"/>
+                android:gravity="center_vertical"
+                android:layout_weight="1" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -137,7 +139,8 @@
                 android:text="ortm.ml"
                 android:id="@+id/siteText"
                 android:layout_margin="5dp"
-                android:gravity="center_vertical"/>
+                android:gravity="center_vertical"
+                android:layout_weight="1" />
         </LinearLayout>
 
     </LinearLayout>
