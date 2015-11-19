@@ -22,7 +22,6 @@
             android:theme="@style/AppTheme"
             android:exported="true"
             android:screenOrientation="portrait"/>
-        <activity android:name=".ORTMWebView"/>
         <activity android:name=".About"></activity>
     </application>
 </manifest>

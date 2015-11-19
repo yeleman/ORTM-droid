@@ -2,24 +2,24 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:context=".MainActivity" >
+                tools:context=".MainActivity"
+    android:background="#000">
     <VideoView
         android:id="@+id/myVideo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true" />
-    <ImageView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_below="@+id/returnBtt" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="retour"
         android:id="@+id/returnBtt"
-        android:background="@android:drawable/ic_menu_revert"
-        android:cropToPadding="false"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
-        android:visibility="visible"
-        android:adjustViewBounds="false"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentTop="true"
+        android:textColor="#fff"
+        android:gravity="center"
+        android:textSize="25dp"
+        android:padding="5dp" />
 </RelativeLayout>

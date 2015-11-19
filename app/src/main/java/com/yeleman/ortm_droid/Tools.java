@@ -44,7 +44,7 @@ public class Tools {
     }
 
     public static void toast (Context context , int msg) {
-        Toast toast = Toast.makeText(context, msg, Toast.LENGTH_SHORT);
+        Toast toast = Toast.makeText(context, msg, Toast.LENGTH_LONG);
         //toast.setGravity(Gravity.BOTTOM|Gravity.CENTER, 0, 0);
         toast.show();
     }

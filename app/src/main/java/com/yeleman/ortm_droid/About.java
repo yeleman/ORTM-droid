@@ -25,10 +25,6 @@ public class About extends Activity {
     }
 
     protected void setupUI() {
-
-        TextView about_title = (TextView) findViewById(R.id.title);
-        about_title.setText(Html.fromHtml(getString(R.string.about_title)));
-
         TextView about_description = (TextView) findViewById(R.id.appLongDescriptionLabel);
         about_description.setText(Html.fromHtml(getString(R.string.about_long_description)));
         versionButton = (Button) findViewById(R.id.updateVersionBtt);

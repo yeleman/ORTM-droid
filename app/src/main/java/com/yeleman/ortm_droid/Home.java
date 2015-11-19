@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 
 import java.io.IOException;
 
@@ -25,10 +26,14 @@ public class Home extends Activity implements View.OnClickListener {
     private LinearLayout tvButton;
     private LinearLayout siteButton;
     private ImageView playButtonCh1, playButtonCh2, pauseButtonCh1, pauseButtonCh2;
-    public String urlCh2 = "http://ortmmali1.primcast.com:8364/shoutcast.com";
+    //public String urlCh2 = "http://ortmmali1.primcast.com:8364/shoutcast.com";
+    public String urlCh2 = "http://usa8-vn.mixstream.net:8138";
     public String urlCh1 = "http://ortmmali.primcast.com:9464/shoutcast.com";
     private MediaPlayer player;
     private String urlCh;
+    private ProgressBar spinnerCh2;
+    private ProgressBar spinnerCh1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,8 +44,10 @@ public class Home extends Activity implements View.OnClickListener {
         tvButton = (LinearLayout) findViewById(R.id.tvButton);
         tvButton.setOnClickListener(this);
         playButtonCh1 = (ImageView) findViewById(R.id.playButtonCh1);
+        spinnerCh1 = (ProgressBar) findViewById(R.id.ch1Spinner);
         playButtonCh1.setOnClickListener(this);
         playButtonCh2 = (ImageView) findViewById(R.id.playButtonCh2);
+        spinnerCh2 = (ProgressBar) findViewById(R.id.ch2Spinner);
         playButtonCh2.setOnClickListener(this);
         pauseButtonCh1 = (ImageView) findViewById(R.id.pauseButtonCh1);
         pauseButtonCh1.setOnClickListener(this);
@@ -48,7 +55,7 @@ public class Home extends Activity implements View.OnClickListener {
         pauseButtonCh2.setOnClickListener(this);
         siteButton = (LinearLayout) findViewById(R.id.gotoSite);
         siteButton.setOnClickListener(this);
-        displayMedaPlayerBtn(false, 0);
+        displayMediaPlayerBtn(false, 0);
     }
     public void onClick(View v) {
 
@@ -79,20 +86,45 @@ public class Home extends Activity implements View.OnClickListener {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
-    public void displayMedaPlayerBtn(boolean play, int ch) {
+    public void displayMediaPlayerBtn(boolean play, int ch) {
         Log.d(TAG, "displayMedaPlayerBtn play: " + play + "  ch: " + ch);
         if (ch == 1) {
             Log.d(TAG, "Ch1 " + ch);
             playOrPause(play, pauseButtonCh1, playButtonCh1);
+            toggleSpinner(play, spinnerCh1, spinnerCh2);
         } else if (ch == 2) {
             Log.d(TAG, "Ch2 " + ch);
             playOrPause(play, pauseButtonCh2, playButtonCh2);
+            toggleSpinner(play, spinnerCh2, spinnerCh1);
         } else {
             Log.d(TAG, "Ch! " + ch);
             goneOrVisible(playButtonCh1 , pauseButtonCh1);
             goneOrVisible(playButtonCh2 , pauseButtonCh2);
         }
     }
+
+    public void toggleSpinner(boolean play, ProgressBar spSelf, ProgressBar spOther) {
+        if (play) {
+            showSpinner(spSelf);
+            hideSpinner(spOther);
+        } else {
+            hideSpinner(spSelf);
+        }
+    }
+
+    public void showSpinner(ProgressBar spinner) {
+        spinner.setVisibility(View.VISIBLE);
+    }
+    public void hideSpinner(ProgressBar spinner) {
+        spinner.setVisibility(View.GONE);
+    }
+
+    public void hideSpinnerFor(int ch) {
+        ProgressBar pb;
+        pb = (ch == 1) ? spinnerCh1 : spinnerCh2;
+        hideSpinner(pb);
+    }
+
     public void playOrPause (boolean v, ImageView pauseButtonCh, ImageView playButtonCh){
         if (v) {
             goneOrVisible(pauseButtonCh, playButtonCh);
@@ -104,12 +136,13 @@ public class Home extends Activity implements View.OnClickListener {
         vbutton.setVisibility(View.VISIBLE);
         gbutton.setVisibility(View.GONE);
     }
-    private void startPlaying() {
+    private void startPlaying(final int ch) {
         Log.d(TAG, "startPlaying");
         player.prepareAsync();
         player.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             public void onPrepared(MediaPlayer mp) {
-                Log.d(TAG, "Player");
+                Log.d(TAG, "Audio started");
+                hideSpinnerFor(ch);
                 player.start();
             }
         });
@@ -117,10 +150,10 @@ public class Home extends Activity implements View.OnClickListener {
     private void stopPlaying() {
         Log.d(TAG, "stopPlaying");
         try {
-            if (player.isPlaying()) {
+            //if (player.isPlaying()) {
                 player.stop();
                 player.release();
-            }
+           // }
         } catch (Exception e){
             Log.d(TAG, e.toString());
         }
@@ -138,7 +171,7 @@ public class Home extends Activity implements View.OnClickListener {
         }
         if (play){
             player = new MediaPlayer();
-            displayMedaPlayerBtn(true, ch);
+            displayMediaPlayerBtn(true, ch);
             try {
                 player.setDataSource(urlCh);
             } catch (IllegalArgumentException e) {
@@ -148,11 +181,11 @@ public class Home extends Activity implements View.OnClickListener {
             } catch (IOException e) {
                 Log.d(TAG, "IOException" + e.toString());
             }
-            startPlaying();
+            startPlaying(ch);
         }else {
-            displayMedaPlayerBtn(false, ch);
+            displayMediaPlayerBtn(false, ch);
         }
-        displayMedaPlayerBtn(false, unCh);
+        displayMediaPlayerBtn(false, unCh);
         Log.d(TAG, "fin initializeMediaPlayer");
     }
 
