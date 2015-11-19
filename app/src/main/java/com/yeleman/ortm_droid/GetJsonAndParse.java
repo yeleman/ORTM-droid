@@ -1,10 +1,6 @@
 package com.yeleman.ortm_droid;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.util.Log;
 

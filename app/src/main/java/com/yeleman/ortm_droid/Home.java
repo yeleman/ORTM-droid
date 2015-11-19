@@ -1,12 +1,16 @@
 package com.yeleman.ortm_droid;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -21,18 +25,16 @@ public class Home extends Activity implements View.OnClickListener {
     private LinearLayout tvButton;
     private LinearLayout siteButton;
     private ImageView playButtonCh1, playButtonCh2, pauseButtonCh1, pauseButtonCh2;
+    public String urlCh2 = "http://ortmmali1.primcast.com:8364/shoutcast.com";
     public String urlCh1 = "http://ortmmali.primcast.com:9464/shoutcast.com";
-    public String urlCh2 = "http://usa8-vn.mixstream.net:8138";
     private MediaPlayer player;
     private String urlCh;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
         setupUI();
     }
-
     public void setupUI() {
         tvButton = (LinearLayout) findViewById(R.id.tvButton);
         tvButton.setOnClickListener(this);
@@ -48,7 +50,6 @@ public class Home extends Activity implements View.OnClickListener {
         siteButton.setOnClickListener(this);
         displayMedaPlayerBtn(false, 0);
     }
-
     public void onClick(View v) {
 
         if (v == playButtonCh1) {
@@ -72,14 +73,12 @@ public class Home extends Activity implements View.OnClickListener {
             startActivity(a);
         }
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
-
     public void displayMedaPlayerBtn(boolean play, int ch) {
         Log.d(TAG, "displayMedaPlayerBtn play: " + play + "  ch: " + ch);
         if (ch == 1) {
@@ -105,7 +104,6 @@ public class Home extends Activity implements View.OnClickListener {
         vbutton.setVisibility(View.VISIBLE);
         gbutton.setVisibility(View.GONE);
     }
-
     private void startPlaying() {
         Log.d(TAG, "startPlaying");
         player.prepareAsync();
@@ -155,6 +153,45 @@ public class Home extends Activity implements View.OnClickListener {
             displayMedaPlayerBtn(false, ch);
         }
         displayMedaPlayerBtn(false, unCh);
-        Log.d(TAG, "fin");
+        Log.d(TAG, "fin initializeMediaPlayer");
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_about) {
+            Intent a = new Intent(Home.this, About.class);
+            startActivity(a);
+        }if (id == R.id.action_chare) {
+            Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+            sharingIntent.setType("text/plain");
+            String shareBody = Constants.share;
+            sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, R.string.app_name);
+            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+            startActivity(Intent.createChooser(sharingIntent, "Partager ..."));
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        switch(keyCode){
+            case KeyEvent.KEYCODE_BACK :
+                new AlertDialog.Builder(this)
+                        .setTitle(getString(R.string.exit))
+                        .setMessage(getString(R.string.exit_confirmed))
+                        .setPositiveButton(android.R.string.ok,
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        System.exit(0);
+                                    }})
+                        .setNegativeButton(android.R.string.cancel,
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {}
+                                }).create().show();
+                return true;
+        }
+        return false;
     }
 }

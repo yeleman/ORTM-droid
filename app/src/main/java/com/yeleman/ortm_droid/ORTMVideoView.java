@@ -1,8 +1,10 @@
 package com.yeleman.ortm_droid;
+
 import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.VideoView;
 
 
@@ -22,9 +24,16 @@ public class ORTMVideoView extends Activity{
 
     public void setupUI(String url) {
         if (url.equals("")){
-            finish();
+            //finish();
             Tools.toast(this, R.string.offlive);
         }
+        ImageView returnBtt = (ImageView)findViewById(R.id.returnBtt);
+        returnBtt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                finish();
+            }
+        });
         VideoView vidView = (VideoView)findViewById(R.id.myVideo);
         Uri vidUri = Uri.parse(url);
         vidView.setVideoURI(vidUri);
