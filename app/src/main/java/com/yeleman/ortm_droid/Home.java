@@ -26,8 +26,8 @@ public class Home extends Activity implements View.OnClickListener {
     private LinearLayout tvButton;
     private LinearLayout siteButton;
     private ImageView playButtonCh1, playButtonCh2, pauseButtonCh1, pauseButtonCh2;
-    //public String urlCh2 = "http://ortmmali1.primcast.com:8364/shoutcast.com";
-    public String urlCh2 = "http://usa8-vn.mixstream.net:8138";
+    public String urlCh2 = "http://ortmmali1.primcast.com:8364/shoutcast.com";
+    //public String urlCh2 = "http://usa8-vn.mixstream.net:8138";
     public String urlCh1 = "http://ortmmali.primcast.com:9464/shoutcast.com";
     private MediaPlayer player;
     private String urlCh;
