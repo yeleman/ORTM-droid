@@ -17,4 +17,5 @@
         Pour toute suggestion ou tout commentaire, merci de contacter :]]></string>
     <string name="version_button_label">Version %1$s (vérifier mises à jour)</string>
     <string name="about_title"><![CDATA[ORTM pour Android ]]></string>
+    <string name="required_connexion_radio"> "Vous devez être connecté pour écouter la radio"</string>
 </resources>

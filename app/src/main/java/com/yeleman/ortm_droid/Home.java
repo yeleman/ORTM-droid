@@ -12,6 +12,7 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -33,6 +34,7 @@ public class Home extends Activity implements View.OnClickListener {
     private String urlCh;
     private ProgressBar spinnerCh2;
     private ProgressBar spinnerCh1;
+    private WebView mWebView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,7 @@ public class Home extends Activity implements View.OnClickListener {
         setContentView(R.layout.home);
         setupUI();
     }
+
     public void setupUI() {
         tvButton = (LinearLayout) findViewById(R.id.tvButton);
         tvButton.setOnClickListener(this);
@@ -170,6 +173,10 @@ public class Home extends Activity implements View.OnClickListener {
             unCh = 1;
         }
         if (play){
+            if (!Tools.isOnline(this)){
+                Tools.toast(this, R.string.required_connexion_radio);
+                return;
+            }
             player = new MediaPlayer();
             displayMediaPlayerBtn(true, ch);
             try {
