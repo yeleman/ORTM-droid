@@ -1,7 +1,6 @@
 package com.yeleman.ortm_droid;
 
 import android.util.Log;
-import android.widget.VideoView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
