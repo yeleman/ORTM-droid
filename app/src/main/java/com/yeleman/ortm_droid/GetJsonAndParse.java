@@ -1,4 +1,4 @@
-package ml.ortm.ortm_droid;
+package com.yeleman.ortm_droid;
 
 import android.app.ProgressDialog;
 import android.os.AsyncTask;

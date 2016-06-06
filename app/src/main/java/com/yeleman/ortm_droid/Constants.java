@@ -1,4 +1,4 @@
-package ml.ortm.ortm_droid;
+package com.yeleman.ortm_droid;
 
 /**
  * Created by fad on 09/11/15.

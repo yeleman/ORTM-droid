@@ -13,7 +13,6 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:id="@+id/imageView"
             android:layout_centerHorizontal="true"
             android:background="@drawable/logo"
             android:layout_margin="10dp" />
@@ -36,7 +35,6 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/contact"
             android:text="fad@yeleman.com"
             android:autoLink="email"
             android:textColorLink="#fff"
