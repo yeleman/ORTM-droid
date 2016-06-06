@@ -1,4 +1,4 @@
-package com.yeleman.ortm_droid;
+package ml.ortm.ortm_droid;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

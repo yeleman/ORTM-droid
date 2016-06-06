@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.yeleman.ortm_droid" >
+    package="ml.ortm.ortm_droid" >
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <application
@@ -19,7 +19,7 @@
         </activity>
         <activity
             android:name=".ORTMVideoView"
-            android:theme="@style/AppTheme"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
             android:exported="true"
             android:screenOrientation="portrait"/>
         <activity android:name=".About"></activity>

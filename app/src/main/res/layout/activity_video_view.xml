@@ -1,16 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:context=".MainActivity"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:background="#000">
     <VideoView
         android:id="@+id/myVideo"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/returnBtt" />
-
+        android:layout_alignParentTop="true" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -21,5 +23,6 @@
         android:textColor="#fff"
         android:gravity="center"
         android:textSize="25dp"
-        android:padding="5dp" />
+        android:padding="5dp"
+        android:visibility="gone" />
 </RelativeLayout>

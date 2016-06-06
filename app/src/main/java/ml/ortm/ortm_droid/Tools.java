@@ -1,4 +1,4 @@
-package com.yeleman.ortm_droid;
+package ml.ortm.ortm_droid;
 
 import android.app.Activity;
 import android.app.ProgressDialog;

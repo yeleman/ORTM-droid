@@ -1,5 +1,4 @@
-package com.yeleman.ortm_droid;
-
+package ml.ortm.ortm_droid;
 import android.util.Log;
 import android.widget.VideoView;
 

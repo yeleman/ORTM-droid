@@ -1,18 +1,14 @@
-package com.yeleman.ortm_droid;
+package ml.ortm.ortm_droid;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -34,7 +30,6 @@ public class Home extends Activity implements View.OnClickListener {
     private String urlCh;
     private ProgressBar spinnerCh2;
     private ProgressBar spinnerCh1;
-    private WebView mWebView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +37,6 @@ public class Home extends Activity implements View.OnClickListener {
         setContentView(R.layout.home);
         setupUI();
     }
-
     public void setupUI() {
         tvButton = (LinearLayout) findViewById(R.id.tvButton);
         tvButton.setOnClickListener(this);
@@ -105,7 +99,6 @@ public class Home extends Activity implements View.OnClickListener {
             goneOrVisible(playButtonCh2 , pauseButtonCh2);
         }
     }
-
     public void toggleSpinner(boolean play, ProgressBar spSelf, ProgressBar spOther) {
         if (play) {
             showSpinner(spSelf);
@@ -114,20 +107,17 @@ public class Home extends Activity implements View.OnClickListener {
             hideSpinner(spSelf);
         }
     }
-
     public void showSpinner(ProgressBar spinner) {
         spinner.setVisibility(View.VISIBLE);
     }
     public void hideSpinner(ProgressBar spinner) {
         spinner.setVisibility(View.GONE);
     }
-
     public void hideSpinnerFor(int ch) {
         ProgressBar pb;
         pb = (ch == 1) ? spinnerCh1 : spinnerCh2;
         hideSpinner(pb);
     }
-
     public void playOrPause (boolean v, ImageView pauseButtonCh, ImageView playButtonCh){
         if (v) {
             goneOrVisible(pauseButtonCh, playButtonCh);
@@ -195,8 +185,6 @@ public class Home extends Activity implements View.OnClickListener {
         displayMediaPlayerBtn(false, unCh);
         Log.d(TAG, "fin initializeMediaPlayer");
     }
-
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -212,26 +200,5 @@ public class Home extends Activity implements View.OnClickListener {
             startActivity(Intent.createChooser(sharingIntent, "Partager ..."));
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        switch(keyCode){
-            case KeyEvent.KEYCODE_BACK :
-                new AlertDialog.Builder(this)
-                        .setTitle(getString(R.string.exit))
-                        .setMessage(getString(R.string.exit_confirmed))
-                        .setPositiveButton(android.R.string.ok,
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        System.exit(0);
-                                    }})
-                        .setNegativeButton(android.R.string.cancel,
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int which) {}
-                                }).create().show();
-                return true;
-        }
-        return false;
     }
 }
